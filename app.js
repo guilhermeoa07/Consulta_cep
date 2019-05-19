@@ -10,9 +10,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: false }));
 
 app.get('/', (req, res)=>{
-    res.status(200).send("Hello....");
+    res.status(200).sendFile(__dirname + '/src/html/index.html');
 });
 
 app.listen(3000, () => {
-    console.log("api rodando na porta " + port);
+    console.log("API rodando na porta " + port);
 });
