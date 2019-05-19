@@ -8,6 +8,7 @@ const CepSchema = new mongoose.Schema({
     tipoLogradouro:{
         type: String,
         lowercase: true,
+        enum: ['Rua', 'Avenida'],
     },
     logradouro: {
         type: String,

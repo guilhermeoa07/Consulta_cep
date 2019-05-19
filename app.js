@@ -13,6 +13,10 @@ app.get('/', (req, res)=>{
     res.status(200).sendFile(__dirname + '/src/html/index.html');
 });
 
-app.listen(3000, () => {
+//Controllers 
+require('./src/controller/CepController')(app);
+require('./src/controller/UserController')(app);
+
+app.listen(port, () => {
     console.log("API rodando na porta " + port);
 });
