@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 const CepSchema = new mongoose.Schema({
     cep: {
-        type: Number,
+        type: String,
         required: true,
     },
-    tipoLogradouro:{
+    tipoLogradouro: {
         type: String,
         lowercase: true,
-        enum: ['Rua', 'Avenida'],
+        enum: ['rua', 'avenida'],
     },
     logradouro: {
         type: String,
