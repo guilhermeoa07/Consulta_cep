@@ -13,13 +13,37 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.get('/', async (req, res) => {
+    const ceps = await Cep.find();
+    if(!ceps) return res.status(200).send("Nenhum CEP cadastrado.");
+    return res.status(200).send({ ceps });
+});
+
+
 router.get('/:cep', async (req, res) => {
     const { cep } = req.params;
     console.log(cep);
-    const ceps = await Cep.find({ cep });
-    if (!ceps)
-        return res.status(404).send({ Erro: 'Cep não encontrado.' });
-    res.status(200).send(ceps);
-})
+    Cep.find({ 'cep': cep}, (err, value) =>{
+        if(err) return res.status(400).send(err);
+        else  return (res.json(value));
+    });
+});
+
+router.get('/id/:id', async (req,res) => {
+    const { id } = req.params;
+    console.log(id);
+    await Cep.findById(id, (err, value) => {
+        if(err) return res.status(400).send(err);
+        else return (res.json(value));
+    });
+});
+
+router.get('/cidade/:cidade', async (req, res) => {
+
+});
+
+router.get('/buscar/:logradouro', async (req, res) => {
+
+});
 
 module.exports = app => app.use('/cep', router);
