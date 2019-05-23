@@ -8,7 +8,7 @@
     "test": "mocha ./test/User.test.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Guilherme Oliveira",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
